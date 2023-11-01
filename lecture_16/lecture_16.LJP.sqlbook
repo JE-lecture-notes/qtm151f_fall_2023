@@ -38,15 +38,18 @@ Server = digital platform that holds lots of information for a particular subjec
 Inside each server, can have different databases 
 ex) Local server with postgres database, US congress data, etc. 
 
-different servers can have different databases 
+Different servers can have different databases 
 
-inside a database can have:  
-- data / table 
+Inside a database can have:  
+- data / table / etc. 
 - can also have schema 
 - schema = subset of tables having columns in common or about a particular topic 
 - different tables inside schema that can have relationships within them = relational data
 
 relational data INSIDE schema INSIDE database INSIDE server
+-- SQLBook: Markup
+Kernels are for python 
+SQL is about servers - make sure server is on (localhost)
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Create SQL Table from Scratch </span>
 -- SQLBook: Markup
@@ -56,7 +59,7 @@ Delete existing table
 -- SQLBook: Code
 -- If the table already exists we can drop it:
 -- If it doesn't exist nothing happens
--- System commands are in upper case and user defined
+-- System commands (functions) are in upper case and user defined
 -- names are in lower case
 -- Comments are written with double dashes "--" rather than hastag (#)
 
@@ -69,6 +72,9 @@ Create empty table from codebook
 -- Create empty TABLE called "drivers"
 -- This example has five arguments separated by a comma
 -- that contain the "column_name" and "column_type", respectively
+
+-- SQL picky about type - input type must ALWAYS be same type as you designate
+-- improves efficieny of code by specifying 
 
 CREATE TABLE drivers(
     driver_id int,
@@ -117,8 +123,9 @@ Try it yourself!
 -- Select a new driver id (needs to be unique)
 -- Make sure to deparate arguments by a semicolon!
 
-
-
+INSERT INTO drivers VALUES (6,'Richard Wilson','United States',12);
+INSERT INTO drivers VALUES (7,'Max Verstappen','Dutch',51);
+INSERT INTO drivers VALUES (8,'Juan Pablo Montoya','Colombian',6)
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Dataset Operations </span>
 
@@ -129,6 +136,7 @@ Extracting columns from table
 -- SQLBook: Code
 -- SELECT extracts certain COLUMNS
 -- FROM is used to indicate the source table
+-- called querying the database/table in SQL
 
 SELECT driver_id, nationality FROM drivers;
 -- SQLBook: Markup
@@ -170,6 +178,9 @@ SELECT SUM(victories) AS sum_victories,
        MIN(victories) AS min_victories,
        MAX(victories) AS max_victories
 FROM drivers;
+
+-- don't include name, gives generic name 
+-- does not create a new table, but can save as new table
 -- SQLBook: Markup
 <font size="5"> 
 
@@ -194,7 +205,9 @@ ORDER BY victories DESC;
 -- The following code would NOT work because we used double quotations
 -- "Double quotations" are used to refer to column names
 SELECT * FROM drivers
-WHERE nationality = 'German';
+WHERE nationality = "German";
+
+-- if the name has spaces, used double quotations for those names
 -- SQLBook: Markup
 <font size = "5">
 
@@ -205,7 +218,8 @@ with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
 
-
+SELECT driver_name,nationality,driver_id FROM drivers
+WHERE (victories > 60);
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> III. Groupby + Chaining </span>
@@ -214,8 +228,10 @@ with more than 60 victories
 
 Groupby + Aggregate
 -- SQLBook: Code
--- This command computes summary statistics by nationalitySELECT COUNT(*) AS num_rows,
+-- This command computes summary statistics by nationality SELECT COUNT(*) AS num_rows,
 -- Including "nationality" (the grouping column) is optional in the select
+
+-- only need column after select IF you want to see it in the table
 SELECT nationality,
        SUM(victories) AS sum_victories,
        AVG(victories) AS mean_victories,
@@ -233,6 +249,8 @@ Subsetting **after** aggregating
 -- HAVING is the command you use to subset *after* aggregating
 -- This differs from WHERE which is use to subset *before* aggregating
 
+-- HAVING comes after a GROUP BY
+
 SELECT nationality,
        SUM(victories) AS sum_victories,
        AVG(victories) AS mean_victories,
@@ -249,6 +267,8 @@ Subsetting **before** and **after** aggregating
 -- HAVING is the command you use to subset *after* aggregating
 -- This differs from WHERE, which is used to subset *before* aggregating
 -- SQL differentiates the two types of subsetting
+
+-- WHERE must come beore GROUP BY
 
 SELECT nationality,
        SUM(victories) AS sum_victories,
