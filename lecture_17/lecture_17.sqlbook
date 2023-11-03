@@ -58,6 +58,8 @@ DROP TABLE IF EXISTS members.us_congress_members;
 
 - See this link: https://hevodata.com/learn/postgresql-import-csv/
 
+- **Optional: we will not use it in this class**
+
 1. Using the ```COPY``` command
 
     For the instructor's computer this is:
@@ -71,6 +73,7 @@ DROP TABLE IF EXISTS members.us_congress_members;
     ```
 
     **Disadvantages:**
+    
     1.1 You have to create the tables, columns and their types manually (See Lecture 16)
 
     1.2 The column types in your CSV **must coincide precisely** with the types you define in SQL (this can be very tricky!)
@@ -139,7 +142,7 @@ SELECT * FROM schemas_name.tables_name
 ```
 -- SQLBook: Code
 -- Write your own code
-
+SELECT * FROM members.us_congress_members;
 -- SQLBook: Markup
 # <span style="color:darkblue"> III. Merge Data </span>
 
@@ -214,7 +217,11 @@ AND schema1.table1.key1_3 = schema2.table2.key2_3;
 - **Hint:** the rows in the two tables are uniquely identified by the columns: ```congress```, ```bill_number```, ```bill_type```
 -- SQLBook: Code
 -- Write your own code
-
+SELECT * FROM bills.bills_actions
+LEFT JOIN bills.bills_subjects
+ON bills.bills_actions.congress = bills.bills_subjects.congress
+AND bills.bills_actions.bill_number = bills.bills_subjects.bill_number
+AND bills.bills_actions.bill_type = bills.bills_subjects.bill_type;
 -- SQLBook: Markup
 # <span style="color:darkblue"> IV. (Optional) Additional Resources </span>
 
