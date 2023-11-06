@@ -26,7 +26,7 @@ United States Congress dataset
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Create and Activate a New Database </span>
 -- SQLBook: Code
--- Active: 1698674191041@@127.0.0.1@5432@postgres
+-- Active: 1698511435004@@127.0.0.1@5432@us_congress
 
 DROP DATABASE IF EXISTS us_congress;
 -- SQLBook: Code
@@ -173,6 +173,7 @@ Import the data before proceeding!
 
 Count unique rows
 -- SQLBook: Code
+-- Active: 1698511435004@@127.0.0.1@5432@us_congress
 -- COUNT(DISTINCT ) computes the number of unique rows
 -- "AS" is the alias or name of the statistic
 
@@ -236,6 +237,11 @@ AND schema1.table1.key1_3 = schema2.table2.key2_3;
 -- SQLBook: Code
 -- Write your own code
 
+SELECT * FROM bills.bills_actions
+LEFT JOIN bills.bills_subjects
+ON bills.bills_subjects.bill_number = bills.bills_actions.bill_number
+AND bills.bills_subjects.bill_type = bills.bills_actions.bill_type
+AND bills.bills_subjects.congress = bills.bills_actions.congress;
 -- SQLBook: Markup
 # <span style="color:darkblue"> IV. (Optional) Additional Resources </span>
 

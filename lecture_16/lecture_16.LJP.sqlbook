@@ -30,6 +30,8 @@ panel on the left:
 
 <img src="figures/serverconnection_sql_vscode-3.png" alt="drawing" width="300"/>
 -- SQLBook: Markup
+LECTURE NOTES
+
 Server = digital platform that holds lots of information for a particular subject and group 
 - can have local server in own personal computer
 - can connect to remote servers and work in that platform 
