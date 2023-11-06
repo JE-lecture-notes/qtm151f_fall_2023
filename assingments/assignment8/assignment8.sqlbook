@@ -4,7 +4,7 @@
 ## Submit this file. No need to convert to HTML
 -- SQLBook: Markup
 <font size = "5">
-Print your name below
+Add a comment with your Emory ID below
 -- SQLBook: Code
 -- Write your own code
 
@@ -95,7 +95,7 @@ upper case and lower case letters
 <font size = "3">
 
 - Obtain the average of "milliseconds" by "driverId" using ```GROUP BY```
-- User ```ORDER BY ``` to sort on the sum of points
+- Use ```ORDER BY ``` to sort by the average of "milliseconds"
 
 HINT: See the end of lectures 17 and 18 for details <br>
 HINT: Include "driverId" in quotations since it has a mix of <br>

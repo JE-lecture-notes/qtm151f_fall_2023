@@ -56,9 +56,7 @@ Import data
 --      CREATE TABLE table_name ( ... ) ```
 
 -- (iii) Import rows from CSV:
---       COPY table_name
---       FROM 'pathname'
---       WITH (DELIMITER ',', FORMAT csv, HEADER MATCH);
+--      Use create_engine from sqlalchemy and to_sql from pandas to import csv files
 
 -- SQLBook: Markup
 ## <span style="color:darkblue"> III. Quiz Structure </span>
@@ -87,6 +85,7 @@ The quiz will use the Formula 1 dataset
 - We will provide an image of the codebook <br>
 with column names and data types
 - You will need to use the SQL command ``` CREATE TABLE ```
+- Manually input rows
 
 -- SQLBook: Markup
 
