@@ -36,6 +36,7 @@ panel on the left:
 
 Delete existing table
 -- SQLBook: Code
+-- Active: 1698674191041@@127.0.0.1@5432@postgres
 -- If the table already exists we can drop it:
 -- If it doesn't exist nothing happens
 -- System commands are in upper case and user defined
@@ -99,7 +100,8 @@ Try it yourself!
 -- Select a new driver id (needs to be unique)
 -- Make sure to deparate arguments by a semicolon!
 
-
+INSERT INTO drivers VALUES (5, 'Max Verstappen', 'Dutch', 51);
+INSERT INTO drivers VALUES (6, 'Juan Pablo Montoya', 'Colombian', 6);
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> II. Dataset Operations </span>
@@ -131,11 +133,11 @@ WHERE nationality = 'German';
 
 -- Evalute OR conditions
 SELECT * FROM drivers
-WHERE (nationality = 'United States') OR (nationality = 'Indian');
+WHERE nationality = 'United States';
 
 -- Evaluate AND conditions
 SELECT * FROM drivers
-WHERE (nationality = 'German') AND (driver_id = 2);
+WHERE (driver_id = 2);
 
 -- SQLBook: Markup
 <font size="5"> 
@@ -159,7 +161,7 @@ Sort
 -- SQLBook: Code
 -- Order in ascending order of victories
 -- Remember that * means that all columns are selected
-SELECT * FROM drivers
+SELECT driver_name FROM drivers
 ORDER BY victories ASC;
 
 -- Order in descending order of victories
@@ -175,7 +177,7 @@ ORDER BY victories DESC;
 -- SQLBook: Code
 -- The following code would NOT work because we used double quotations
 -- "Double quotations" are used to refer to column names
-SELECT * FROM drivers
+SELECT * FROM drivers 
 WHERE nationality = 'German';
 -- SQLBook: Markup
 <font size = "5">
@@ -186,8 +188,7 @@ Try it yourself!
 with more than 60 victories
 -- SQLBook: Code
 -- Write your own code!
-
-
+SELECT driver_name, nationality, driver_id, victories FROM drivers;
 
 -- SQLBook: Markup
 # <span style="color:darkblue"> III. Groupby + Chaining </span>
