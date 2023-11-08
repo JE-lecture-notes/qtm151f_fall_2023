@@ -212,6 +212,20 @@ SELECT *
 FROM bills.bills_actions
 LEFT JOIN members.us_congress_members
 ON us_congress_members.member_id  = bills_actions.member_id;
+-- SQLBook: Code
+-- Active: 1698511435004@@127.0.0.1@5432@us_congress
+
+-- to select only ONE column from dataset for a merge
+-- but still need a column for what you merge ON
+
+SELECT bills.bills_actions.*,members.us_congress_members.full_name
+FROM bills.bills_actions
+LEFT JOIN members.us_congress_members
+ON us_congress_members.member_id  = bills_actions.member_id;
+
+-- this will only have the merge ON column
+-- and the full_name column 
+-- nothing else from us_congress_members table
 -- SQLBook: Markup
 <font size = "5">
 

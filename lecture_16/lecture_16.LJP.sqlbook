@@ -234,6 +234,7 @@ Groupby + Aggregate
 -- Including "nationality" (the grouping column) is optional in the select
 
 -- only need column after select IF you want to see it in the table
+
 SELECT nationality,
        SUM(victories) AS sum_victories,
        AVG(victories) AS mean_victories,
