@@ -30,6 +30,24 @@ panel on the left:
 
 <img src="figures/serverconnection_sql_vscode-3.png" alt="drawing" width="300"/>
 -- SQLBook: Markup
+Server = digital platform that holds lots of information for a particular subject and group 
+- can have local server in own personal computer
+- can connect to remote servers and work in that platform 
+- more than one person could work on same server 
+
+Inside each server, can have different databases 
+ex) Local server with postgres database, US congress data, etc. 
+
+different servers can have different databases 
+
+inside a database can have:  
+- data / table 
+- can also have schema 
+- schema = subset of tables having columns in common or about a particular topic 
+- different tables inside schema that can have relationships within them = relational data
+
+relational data INSIDE schema INSIDE database INSIDE server
+-- SQLBook: Markup
 # <span style="color:darkblue"> II. Create SQL Table from Scratch </span>
 -- SQLBook: Markup
 <font size = "5">
